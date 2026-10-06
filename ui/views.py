@@ -134,7 +134,7 @@ DRAFT_LABELS = [
 
 
 def _confirm_function():
-    """tools.confirm.confirm_request(employee_id, draft) -> {"number": ...}, once it exists."""
+    """tools.confirm.confirm_request(employee_id, drafts, draft_id) -> {"ok", "number", ...}."""
     try:
         from tools import confirm
         return getattr(confirm, "confirm_request", None)
@@ -163,13 +163,16 @@ def draft_card(draft_id: str, where: str) -> None:
                        help=None if confirm else "The Confirm step (tools/confirm.py) isn't built yet.",
                        use_container_width=True):
             try:
-                result = confirm(st.session_state.employee["employee_id"], draft)
-                st.session_state.confirmed[draft_id] = {"number": result.get("number", "submitted"), "draft": draft}
-                st.session_state.drafts.pop(draft_id, None)
-                data.snapshot.clear()
+                result = confirm(st.session_state.employee["employee_id"], st.session_state.drafts, draft_id)
             except Exception as err:
                 st.error(f"The request was not submitted. {type(err).__name__}: {err}")
                 return
+            if not result.get("ok"):
+                st.error(result.get("error", "The request was not submitted."))
+                return
+            st.session_state.confirmed[draft_id] = {"number": result["number"], "draft": draft}
+            st.session_state.drafts.pop(draft_id, None)
+            data.snapshot.clear()
             st.rerun()
         if right.button("Discard", key=f"discard_{where}_{draft_id}", use_container_width=True):
             st.session_state.drafts.pop(draft_id, None)
@@ -200,6 +203,8 @@ def _sources_html(sources: list[dict]) -> str:
         title = s.get("title") or s.get("document_id") or "Policy"
         section = s.get("section")
         name = f"{title} · Section {section}" if section else title
+        if s.get("section_title"):
+            name += f": {s['section_title']}"
         chips.append(f'<div class="ns-source">{icon("doc", 20)}<span>{escape(str(name))}</span>'
                      f'<small>{escape(str(s.get("document_id", "")))}</small></div>')
     return f'<div class="ns-sources">{"".join(chips)}</div>' if chips else ""
@@ -217,7 +222,7 @@ def _assistant_message(msg: dict, index: int) -> None:
         lead = '<span class="ns-check">&#10003;</span>Used ' + "".join(
             f'<span class="ns-step">{escape(s)}</span>' for s in msg["steps"])
         if msg.get("sources"):
-            lead += " Policy cited."
+            lead += "<span>Policy cited</span>"
     else:
         lead = '<span class="ns-check">&#10003;</span>Answered without a record lookup'
     html(f'<div class="ns-activity">{lead}<span>&middot; {msg.get("elapsed", 0):.1f} s</span>'
@@ -225,6 +230,13 @@ def _assistant_message(msg: dict, index: int) -> None:
     if msg.get("error"):
         with st.expander("Technical detail"):
             st.code(msg["error"])
+    elif msg.get("handoffs"):
+        count = len(msg["handoffs"])
+        with st.expander(f"How North Star answered · {count} hand-off{'s' if count != 1 else ''}"):
+            for step, line in enumerate(msg["handoffs"], start=1):
+                who, _, request = line.partition(": ")
+                html(f'<div class="ns-handoff"><span class="ns-step">{step}</span><b>{escape(who)}</b>'
+                     f'<span>{escape(request)}</span></div>')
     for draft_id in msg.get("draft_ids", []):
         draft_card(draft_id, f"chat{index}")
 
@@ -290,7 +302,8 @@ def _run_turn(prompt: str) -> None:
         html('<div class="ns-from">NORTH STAR</div>')
         slot = st.empty()
         html_in(slot, '<div class="ns-working"><span class="ns-pulse"></span>Charting your course</div>')
-        for kind, value in assistant.ask(st.session_state.agent, prompt, st.session_state.drafts):
+        for kind, value in assistant.ask(st.session_state.agent, prompt, st.session_state.drafts,
+                                         st.session_state.activity, data.policies()):
             if kind == "working":
                 html_in(slot, f'<div class="ns-working"><span class="ns-pulse"></span>{escape(str(value))}</div>')
             elif kind == "text":
@@ -299,7 +312,7 @@ def _run_turn(prompt: str) -> None:
                 reply = value
     st.session_state.messages.append({
         "role": "assistant", "content": reply.text, "time": clock(), "steps": reply.steps,
-        "sources": reply.sources, "draft_ids": reply.draft_ids, "elapsed": reply.elapsed, "error": reply.error,
+        "sources": reply.sources, "draft_ids": reply.draft_ids, "elapsed": reply.elapsed, "error": reply.error, "handoffs": reply.handoffs,
     })
     st.rerun()
 
