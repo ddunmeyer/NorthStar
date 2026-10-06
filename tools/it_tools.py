@@ -138,11 +138,17 @@ def make_it_tools(employee_id: str, drafts: dict) -> list:
                         "message": "An open request for this access already exists. Do not draft a "
                                    "duplicate; tell the employee its number and status."}
             given.setdefault("short_description", f"{service['name']} access")
+            if "end_date" in given:
+                given.setdefault("start_date", date.today().isoformat())
             required = list(service.get("required_fields", []))
         elif kind == "incident":
             required = INCIDENT_FIELDS
         else:
             required = CHANGE_FIELDS
+
+        # A justification copied from the description isn't a reason the employee gave.
+        if given.get("business_justification", "").lower() == given.get("short_description", "").lower():
+            given.pop("business_justification", None)
 
         missing = [f for f in required if f not in given]
         if missing:
@@ -167,6 +173,10 @@ def make_it_tools(employee_id: str, drafts: dict) -> list:
                  "requested_by_employee_id": employee_id, **given}
         if service is not None:
             draft["approval_required"] = bool(service.get("approval_required"))
+        # Keep one open draft per request: a revised draft replaces the earlier one.
+        for old_id in [d for d, v in drafts.items()
+                       if v["request_type"] == kind and v.get("service_id") == given.get("service_id")]:
+            del drafts[old_id]
         drafts[draft_id] = draft
         return {"draft": draft, "submitted": False,
                 "next_step": "Show this draft to the employee. Nothing is submitted until they click Confirm."}
