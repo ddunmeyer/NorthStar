@@ -11,7 +11,7 @@ import streamlit as st
 from ui import assistant, data, theme, views
 
 st.set_page_config(page_title="North Star", page_icon=theme.STAR_AVATAR, layout="wide",
-                   initial_sidebar_state="expanded")
+                   initial_sidebar_state="auto")
 # The banner is full strength on the entry screen and Overview, dimmed behind the list pages.
 dim = "employee" in st.session_state and st.session_state.get("page", "Overview") != "Overview"
 st.markdown(theme.css(dim_banner=dim), unsafe_allow_html=True)
@@ -35,6 +35,7 @@ if "agent" not in st.session_state:
         employee_id, st.session_state.drafts, st.session_state.activity)
 
 views.sidebar(profile, st.session_state.agent_mode)
+views.mobile_brand(profile)
 
 try:
     snap = data.snapshot(employee_id, data.current_month())
@@ -50,3 +51,4 @@ PAGES = {
     "Company knowledge": views.knowledge,
 }
 PAGES[st.session_state.page](profile, snap)
+views.mobile_nav()

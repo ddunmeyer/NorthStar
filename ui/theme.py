@@ -148,7 +148,7 @@ a {{ color:var(--ns-aurora); }}
 }}
 .st-key-chat_scroll {{ border:none !important; }}
 /* the chat fills what is left of the window, so the dashboard fits one screen */
-[data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 714px) !important; min-height:300px; }}
+[data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 632px) !important; flex:0 0 auto !important; min-height:300px; }}
 .ns-user {{ display:flex; justify-content:flex-end; align-items:flex-start; gap:14px; margin:.3rem 0 .2rem; }}
 .ns-user-bubble {{
   background:#1C3252; border:1px solid #2F4B6C; color:var(--ns-ice); padding:.7rem 1.15rem;
@@ -229,6 +229,7 @@ a {{ color:var(--ns-aurora); }}
   .ns-draft {{ padding-left:1rem; }}
   .ns-hero h1 {{ font-size:2.1rem; }} .ns-hero p {{ font-size:1.15rem; }}
   .ns-user-bubble {{ max-width:88%; }}
+  .st-key-chat_scroll [data-testid="stExpander"] {{ margin-left:0; }}
 }}
 
 /* ---------- entry screen ---------- */
@@ -243,5 +244,88 @@ a {{ color:var(--ns-aurora); }}
   background:var(--ns-aurora); color:#06202B; border:none; font-weight:600; font-size:1.05rem; padding:.75rem; border-radius:10px;
 }}
 [data-testid="stFormSubmitButton"] button:hover {{ background:#C3F1FA; color:#06202B; }}
+
+/* ---------- phones: no sidebar, a tab bar pinned to the bottom ---------- */
+.ns-mobile-brand {{ display:none; align-items:center; gap:10px; }}
+[data-testid="stElementContainer"]:has(.ns-mobile-brand),
+[data-testid="stLayoutWrapper"]:has(> .st-key-mobile_nav), .st-key-mobile_nav {{ display:none; }}
+@media (max-width: 768px) {{
+  [data-testid="stSidebar"], [data-testid="stExpandSidebarButton"], [data-testid="stSidebarCollapsedControl"] {{ display:none !important; }}
+  [data-testid="stHeader"] {{ display:none; }}
+  [data-testid="stMainBlockContainer"] {{ padding:1rem .85rem 6.4rem; }}
+  [data-testid="stMain"] {{ background-position:top right 38%; }}
+  /* a veil keeps the heading readable where it sits over bright snow */
+  [data-testid="stMain"]::before {{ content:""; position:absolute; left:0; right:0; top:0; height:150px; pointer-events:none;
+    background:linear-gradient(rgba(12,22,38,.78), rgba(12,22,38,.5) 62%, rgba(12,22,38,0)); }}
+  [data-testid="stMainBlockContainer"] {{ position:relative; z-index:1; }}
+
+  [data-testid="stElementContainer"]:has(.ns-mobile-brand) {{ display:block; }}
+  .ns-mobile-brand {{ display:flex; margin-bottom:.4rem; }}
+  .ns-mobile-brand .ns-emblem {{ width:38px; height:38px; border-radius:9px; }}
+  .ns-mobile-brand .ns-wordmark {{ font-size:1.02rem; }}
+  .ns-mobile-brand .ns-who {{ margin-left:auto; color:var(--ns-silver); font-size:.88rem; }}
+
+  .ns-hero h1 {{ font-size:1.72rem; }} .ns-hero p {{ font-size:1rem; margin-bottom:.9rem; color:var(--ns-ice); }}
+  .ns-page-title {{ font-size:1.6rem; }} .ns-page-sub {{ font-size:.98rem; margin-bottom:1rem; }}
+
+  /* tiles stay three across, compact */
+  [data-testid="stHorizontalBlock"]:has([class*="st-key-tile_"]) {{ flex-wrap:nowrap !important; gap:.5rem !important; }}
+  [data-testid="stHorizontalBlock"]:has([class*="st-key-tile_"]) > [data-testid="stColumn"] {{ min-width:0 !important; flex:1 1 0 !important; width:auto !important; }}
+  .ns-tile {{ padding:.7rem .65rem; min-height:86px; border-radius:12px; align-items:flex-start; }}
+  .ns-tile-label {{ font-size:.74rem; white-space:normal; line-height:1.2; min-height:1.8rem; }}
+  .ns-tile-value {{ font-size:1.28rem; }} .ns-tile-value small {{ font-size:.7rem; margin-left:.25rem; }}
+
+  /* quick prompts two by two */
+  [data-testid="stHorizontalBlock"]:has([class*="st-key-quick_"]) {{ flex-wrap:wrap !important; gap:.5rem !important; }}
+  [data-testid="stHorizontalBlock"]:has([class*="st-key-quick_"]) > [data-testid="stColumn"] {{
+    min-width:calc(50% - .25rem) !important; flex:1 1 calc(50% - .25rem) !important; width:auto !important; }}
+  [class*="st-key-quick_"] {{ margin-top:0; }}
+  [class*="st-key-quick_"] button {{ min-height:52px; padding:.6rem .7rem; gap:8px; }}
+  [class*="st-key-quick_"] button p {{ font-size:.86rem; text-align:left; line-height:1.2; white-space:normal; }}
+  [class*="st-key-quick_"] button::after {{ display:none; }}
+  [class*="st-key-quick_"] button [data-testid="stMarkdownContainer"] {{ text-align:left; }}
+  [class*="st-key-quick_"] button [data-testid="stIconMaterial"] {{ font-size:1.3rem; }}
+
+  /* chat */
+  .st-key-chat_panel {{ padding:.35rem .55rem .7rem; border-radius:14px; }}
+  [data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 548px) !important; flex:0 0 auto !important; min-height:250px; }}
+  [data-testid="stChatMessage"] {{ gap:10px; }}
+  [data-testid="stChatMessage"] > :first-child {{ width:36px; height:36px; padding:6px; border-radius:8px; }}
+  [data-testid="stChatMessageContent"] {{ padding:.75rem .9rem .8rem; }}
+  [data-testid="stChatMessageContent"] p, [data-testid="stChatMessageContent"] li {{ font-size:1rem; }}
+  .ns-user-bubble {{ font-size:1rem; max-width:84%; }} .ns-user-avatar {{ display:none; }} .ns-user-time {{ padding-right:4px; }}
+  .ns-activity {{ gap:6px; font-size:.8rem; }} .ns-activity .ns-time {{ margin-left:0; }}
+  .ns-source {{ font-size:.86rem; flex-wrap:wrap; gap:4px 10px; }} .ns-source span {{ flex:1 1 0; min-width:0; }}
+  .ns-source small {{ margin-left:0; flex-basis:100%; padding-left:30px; }}
+  .ns-draft dl {{ grid-template-columns:minmax(0,1fr); gap:0; }} .ns-draft dd {{ margin-bottom:.45rem; }}
+  .ns-handoff {{ grid-template-columns:auto 1fr; }} .ns-handoff span:last-child {{ grid-column:1 / -1; }}
+  .ns-empty {{ padding:1.6rem .6rem 1rem; }}
+  .ns-foot {{ text-align:center; }}
+
+  /* bottom tab bar */
+  [data-testid="stLayoutWrapper"]:has(> .st-key-mobile_nav) {{ display:block; }}
+  .st-key-mobile_nav {{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:999; width:100% !important;
+    background:rgba(9,18,32,.96); border-top:1px solid var(--ns-line); backdrop-filter:blur(10px);
+    padding:.3rem .3rem calc(.3rem + env(safe-area-inset-bottom));
+  }}
+  .st-key-mobile_nav [data-testid="stHorizontalBlock"] {{ flex-wrap:nowrap !important; gap:.15rem !important; }}
+  .st-key-mobile_nav [data-testid="stColumn"] {{ min-width:0 !important; flex:1 1 0 !important; width:auto !important; }}
+  .st-key-mobile_nav button {{
+    width:100%; background:transparent; border:none; border-radius:10px; padding:.3rem 0; min-height:52px; color:var(--ns-silver);
+  }}
+  .st-key-mobile_nav button > div > span {{ flex-direction:column; gap:1px; }}
+  .st-key-mobile_nav button p {{ font-size:.68rem; white-space:nowrap; }}
+  .st-key-mobile_nav button [data-testid="stIconMaterial"] {{ font-size:1.45rem; }}
+  .st-key-mobile_nav button[kind="primary"], .st-key-mobile_nav [data-testid="stBaseButton-primary"] {{ background:#182C47; color:var(--ns-aurora); }}
+
+  /* entry screen */
+  .ns-entry-brand {{ top:1rem; left:1rem; gap:10px; }}
+  .ns-entry-brand .ns-emblem {{ width:40px; height:40px; border-radius:9px; }}
+  .ns-entry-brand .ns-wordmark {{ font-size:1.05rem; }} .ns-entry-brand .ns-tagline {{ font-size:.76rem; }}
+  .ns-entry {{ margin-top:190px; }}
+  .ns-entry h1 {{ font-size:clamp(1.9rem, 8.4vw, 3rem); }} .ns-entry p {{ font-size:1rem; margin-bottom:.4rem; }}
+  [data-testid="stForm"] {{ padding:1.1rem 1rem 1rem; }}
+}}
 </style>
 """
