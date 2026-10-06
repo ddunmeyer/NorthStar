@@ -320,6 +320,9 @@ a {{ color:var(--ns-aurora); }}
 .ns-draft dt {{ color:var(--ns-silver); font-size:.9rem; }} .ns-draft dd {{ margin:0; color:var(--ns-ice); font-size:.96rem; }}
 [class*="st-key-draftbar_"] {{ padding-left:66px; max-width:866px; }}
 [data-testid="stExpander"] {{ border:1px solid var(--ns-line); border-radius:12px; background:#132238; }}
+.st-key-chat_scroll [data-testid="stExpander"] {{ margin:0 0 .7rem 66px; max-width:800px; }}
+.ns-handoff {{ display:grid; grid-template-columns:auto auto 1fr; gap:10px; align-items:baseline; padding:.3rem 0; font-size:.94rem; color:var(--ns-silver); }}
+.ns-handoff b {{ color:var(--ns-ice); font-weight:600; white-space:nowrap; }}
 .ns-foot {{ text-align:right; color:#7F96B5; font-size:.8rem; padding:.9rem .2rem 0; }}
 
 /* ---------- narrower windows ---------- */

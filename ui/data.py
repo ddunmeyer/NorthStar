@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
@@ -115,7 +116,9 @@ def policies() -> list[dict]:
         meta = json.loads(meta_path.read_text(encoding="utf-8"))["metadataAttributes"] if meta_path.exists() else {}
         text = path.read_text(encoding="utf-8")
         body = text[text.index("## "):] if "## " in text else text
+        sections = dict(re.findall(r"^## (\d+)\. (.+)$", text, flags=re.MULTILINE))
         docs.append({"document_id": meta.get("document_id", path.stem), "title": meta.get("title", path.stem),
+                     "sections": sections,
                      "owner": meta.get("owner", ""), "effective_date": meta.get("effective_date", ""),
                      "version": meta.get("version", ""), "body": body.replace("\n## ", "\n\n#### ").replace("## ", "#### ", 1)})
     return docs
