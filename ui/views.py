@@ -124,6 +124,35 @@ def sidebar(profile: dict, mode: str) -> None:
         html(f'<div class="ns-side-note">{status}<br>{escape(assistant.MODEL_ID)} &middot; {escape(assistant.REGION)}</div>')
 
 
+MOBILE_TABS = [
+    ("Overview", "Home", ":material/home:"),
+    ("Developer projects", "Projects", ":material/code:"),
+    ("IT & access", "IT", ":material/laptop_mac:"),
+    ("Company knowledge", "Policies", ":material/menu_book:"),
+]
+
+
+def mobile_brand(profile: dict) -> None:
+    """A slim wordmark for phones, where the sidebar is hidden. CSS shows it only on small screens."""
+    html(f'<div class="ns-mobile-brand"><div class="ns-emblem">{theme.star_svg(22)}</div>'
+         f'<div class="ns-wordmark">NORTH STAR</div><div class="ns-who">{escape(profile["name"])}</div></div>')
+
+
+def mobile_nav() -> None:
+    """The phone tab bar. CSS pins it to the bottom of small screens and hides it elsewhere."""
+    with st.container(key="mobile_nav"):
+        columns = st.columns(len(MOBILE_TABS) + 1)
+        for column, (page, label, material) in zip(columns, MOBILE_TABS):
+            active = st.session_state.page == page
+            if column.button(label, icon=material, key=f"mnav_{label}", type="primary" if active else "secondary",
+                             use_container_width=True) and not active:
+                st.session_state.page = page
+                st.rerun()
+        if columns[-1].button("Sign out", icon=":material/logout:", key="mnav_signout", use_container_width=True):
+            st.session_state.clear()
+            st.rerun()
+
+
 # ----------------------------------------------------------------- drafts
 DRAFT_LABELS = [
     ("service_id", "Service"), ("short_description", "Summary"), ("category", "Category"),
