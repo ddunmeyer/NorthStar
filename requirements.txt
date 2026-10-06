@@ -3,3 +3,4 @@ streamlit>=1.65
 boto3>=1.43
 botocore[crt]>=1.43
 pytest>=9.1
+python-dotenv
