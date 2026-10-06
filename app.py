@@ -29,8 +29,10 @@ st.session_state.setdefault("page", "Overview")
 st.session_state.setdefault("messages", [])
 st.session_state.setdefault("drafts", {})
 st.session_state.setdefault("confirmed", {})
+st.session_state.setdefault("activity", [])
 if "agent" not in st.session_state:
-    st.session_state.agent, st.session_state.agent_mode = assistant.build_agent(employee_id, st.session_state.drafts)
+    st.session_state.agent, st.session_state.agent_mode = assistant.build_agent(
+        employee_id, st.session_state.drafts, st.session_state.activity)
 
 views.sidebar(profile, st.session_state.agent_mode)
 
