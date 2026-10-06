@@ -1,0 +1,128 @@
+[
+  {
+    "employee_id": "E001",
+    "plan": "Vacation PTO",
+    "available_hours": 96,
+    "approved_upcoming_hours": 16,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E002",
+    "plan": "Vacation PTO",
+    "available_hours": 72,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E003",
+    "plan": "Vacation PTO",
+    "available_hours": 40,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E004",
+    "plan": "Vacation PTO",
+    "available_hours": 120,
+    "approved_upcoming_hours": 16,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E005",
+    "plan": "Vacation PTO",
+    "available_hours": 88,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E006",
+    "plan": "Vacation PTO",
+    "available_hours": 64,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E007",
+    "plan": "Vacation PTO",
+    "available_hours": 104,
+    "approved_upcoming_hours": 16,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E008",
+    "plan": "Vacation PTO",
+    "available_hours": 56,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E009",
+    "plan": "Vacation PTO",
+    "available_hours": 80,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E010",
+    "plan": "Vacation PTO",
+    "available_hours": 112,
+    "approved_upcoming_hours": 16,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E011",
+    "plan": "Vacation PTO",
+    "available_hours": 48,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E012",
+    "plan": "Vacation PTO",
+    "available_hours": 64,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E013",
+    "plan": "Vacation PTO",
+    "available_hours": 120,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  },
+  {
+    "employee_id": "E014",
+    "plan": "Vacation PTO",
+    "available_hours": 88,
+    "approved_upcoming_hours": 0,
+    "as_of": "2026-10-05",
+    "unit": "hours",
+    "note": "Available balance already accounts for approved reservations; do not subtract upcoming hours again."
+  }
+]

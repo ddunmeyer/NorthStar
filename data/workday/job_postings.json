@@ -1,0 +1,62 @@
+[
+  {
+    "requisition_id": "JOB-001",
+    "title": "Platform Engineer",
+    "department": "Engineering",
+    "location": "Chicago",
+    "work_mode": "hybrid",
+    "status": "open",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  },
+  {
+    "requisition_id": "JOB-002",
+    "title": "AI Engineer",
+    "department": "Engineering",
+    "location": "Remote US",
+    "work_mode": "remote",
+    "status": "open",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  },
+  {
+    "requisition_id": "JOB-003",
+    "title": "IT Support Analyst",
+    "department": "IT",
+    "location": "Chicago",
+    "work_mode": "onsite",
+    "status": "open",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  },
+  {
+    "requisition_id": "JOB-004",
+    "title": "HR Analyst",
+    "department": "HR",
+    "location": "Chicago",
+    "work_mode": "hybrid",
+    "status": "closed",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  },
+  {
+    "requisition_id": "JOB-005",
+    "title": "Cloud Engineer",
+    "department": "IT",
+    "location": "Remote US",
+    "work_mode": "remote",
+    "status": "open",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  },
+  {
+    "requisition_id": "JOB-006",
+    "title": "Senior QA Engineer",
+    "department": "Engineering",
+    "location": "Chicago",
+    "work_mode": "hybrid",
+    "status": "open",
+    "posted_date": "2026-10-01",
+    "employment_type": "Full time"
+  }
+]

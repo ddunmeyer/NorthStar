@@ -1,0 +1,26 @@
+[
+  {
+    "sprint_id": "NST-12",
+    "project_key": "NST",
+    "name": "Sprint 12",
+    "start_date": "2026-10-05",
+    "end_date": "2026-10-16",
+    "state": "active"
+  },
+  {
+    "sprint_id": "CLD-12",
+    "project_key": "CLD",
+    "name": "Sprint 12",
+    "start_date": "2026-10-05",
+    "end_date": "2026-10-16",
+    "state": "active"
+  },
+  {
+    "sprint_id": "FIN-12",
+    "project_key": "FIN",
+    "name": "Sprint 12",
+    "start_date": "2026-10-05",
+    "end_date": "2026-10-16",
+    "state": "active"
+  }
+]

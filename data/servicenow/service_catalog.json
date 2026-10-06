@@ -1,0 +1,34 @@
+[
+  {
+    "service_id": "VPN-DEV",
+    "name": "Developer VPN",
+    "approval_required": true,
+    "approver_role": "manager",
+    "required_fields": [
+      "business_justification",
+      "start_date",
+      "end_date"
+    ]
+  },
+  {
+    "service_id": "AWS-SANDBOX",
+    "name": "AWS development sandbox",
+    "approval_required": true,
+    "approver_role": "manager",
+    "required_fields": [
+      "business_justification",
+      "start_date",
+      "end_date"
+    ]
+  },
+  {
+    "service_id": "JIRA-PROJECT",
+    "name": "Jira project access",
+    "approval_required": true,
+    "approver_role": "project_owner",
+    "required_fields": [
+      "project_key",
+      "business_justification"
+    ]
+  }
+]

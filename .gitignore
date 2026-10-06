@@ -7,3 +7,4 @@ __pycache__/
 .northstar.json
 .streamlit/secrets.toml
 evaluation/results/
+.DS_Store

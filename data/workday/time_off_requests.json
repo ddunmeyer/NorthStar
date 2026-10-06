@@ -1,0 +1,128 @@
+[
+  {
+    "request_id": "PTO-001",
+    "employee_id": "E001",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "approved",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-002",
+    "employee_id": "E002",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-003",
+    "employee_id": "E003",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-004",
+    "employee_id": "E004",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "approved",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-005",
+    "employee_id": "E005",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-006",
+    "employee_id": "E006",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-007",
+    "employee_id": "E007",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "approved",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-008",
+    "employee_id": "E008",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-009",
+    "employee_id": "E009",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-010",
+    "employee_id": "E010",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "approved",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-011",
+    "employee_id": "E011",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-012",
+    "employee_id": "E012",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-013",
+    "employee_id": "E013",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  },
+  {
+    "request_id": "PTO-014",
+    "employee_id": "E014",
+    "start_date": "2026-10-19",
+    "end_date": "2026-10-20",
+    "hours": 16,
+    "status": "pending",
+    "approver_employee_id": "E010"
+  }
+]

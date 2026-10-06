@@ -1,0 +1,11 @@
+{
+  "metadataAttributes": {
+    "document_id": "NS-HR-001",
+    "title": "Employee Handbook",
+    "owner": "HR",
+    "effective_date": "2026-01-01",
+    "audience": "all-employees",
+    "version": "1.0",
+    "synthetic": true
+  }
+}
