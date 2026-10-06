@@ -1,0 +1,37 @@
+[
+  {
+    "project_key": "NST",
+    "name": "North Star Employee Platform",
+    "member_employee_ids": [
+      "E001",
+      "E002",
+      "E005",
+      "E009",
+      "E010",
+      "E011",
+      "E012",
+      "E013",
+      "E014"
+    ],
+    "owner_employee_id": "E010"
+  },
+  {
+    "project_key": "CLD",
+    "name": "Cloud Operations",
+    "member_employee_ids": [
+      "E003",
+      "E007",
+      "E010"
+    ],
+    "owner_employee_id": "E010"
+  },
+  {
+    "project_key": "FIN",
+    "name": "Finance Automation",
+    "member_employee_ids": [
+      "E006",
+      "E010"
+    ],
+    "owner_employee_id": "E006"
+  }
+]
