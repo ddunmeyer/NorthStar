@@ -2,5 +2,15 @@
 base = "dark"
 primaryColor = "#9DE5F4"
 backgroundColor = "#0C1626"
-secondaryBackgroundColor = "#13233A"
+secondaryBackgroundColor = "#15243A"
 textColor = "#F3F7FC"
+
+[client]
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
