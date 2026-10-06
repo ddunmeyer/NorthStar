@@ -134,7 +134,7 @@ DRAFT_LABELS = [
 
 
 def _confirm_function():
-    """tools.confirm.confirm_request(employee_id, draft) -> {"number": ...}, once it exists."""
+    """tools.confirm.confirm_request(employee_id, drafts, draft_id) -> {"ok", "number", ...}."""
     try:
         from tools import confirm
         return getattr(confirm, "confirm_request", None)
@@ -163,13 +163,16 @@ def draft_card(draft_id: str, where: str) -> None:
                        help=None if confirm else "The Confirm step (tools/confirm.py) isn't built yet.",
                        use_container_width=True):
             try:
-                result = confirm(st.session_state.employee["employee_id"], draft)
-                st.session_state.confirmed[draft_id] = {"number": result.get("number", "submitted"), "draft": draft}
-                st.session_state.drafts.pop(draft_id, None)
-                data.snapshot.clear()
+                result = confirm(st.session_state.employee["employee_id"], st.session_state.drafts, draft_id)
             except Exception as err:
                 st.error(f"The request was not submitted. {type(err).__name__}: {err}")
                 return
+            if not result.get("ok"):
+                st.error(result.get("error", "The request was not submitted."))
+                return
+            st.session_state.confirmed[draft_id] = {"number": result["number"], "draft": draft}
+            st.session_state.drafts.pop(draft_id, None)
+            data.snapshot.clear()
             st.rerun()
         if right.button("Discard", key=f"discard_{where}_{draft_id}", use_container_width=True):
             st.session_state.drafts.pop(draft_id, None)
