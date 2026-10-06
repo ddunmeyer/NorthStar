@@ -5,11 +5,9 @@ banner), so the app ships no stock imagery.
 """
 from __future__ import annotations
 
-import base64
-import math
-import random
-from functools import lru_cache
 from pathlib import Path
+
+from ui.artwork import banner_data_uri
 
 MIDNIGHT = "#0C1626"
 PANEL = "#15243A"
@@ -34,111 +32,6 @@ def star_svg(size: int = 28) -> str:
     )
 
 
-def _ridge(rng: random.Random, base: float, height: float, spacing: float) -> list[tuple[float, float, bool]]:
-    """A mountain ridge across the 1600px banner as (x, y, is_peak) points."""
-    points, x, peak = [], -60.0, False
-    while x < 1680:
-        y = base - height * (rng.uniform(.55, 1) if peak else rng.uniform(.08, .3))
-        points.append((x, y, peak))
-        gap = spacing * rng.uniform(.7, 1.3)
-        # a shoulder between valley and peak keeps the slopes from looking ruled
-        points.append((x + gap * .5, y + (rng.uniform(-.5, .1) if peak else rng.uniform(-.35, -.1)) * height * .5, False))
-        x += gap
-        peak = not peak
-    return points
-
-
-def _range(points: list[tuple[float, float, bool]], fill: str, floor: int) -> str:
-    path = " ".join(f"L{x:.0f} {y:.0f}" for x, y, _ in points)
-    return f'<path d="M-60 {floor} {path} L1680 {floor}Z" fill="{fill}"/>'
-
-
-def _facets(points: list[tuple[float, float, bool]], floor: int) -> str:
-    """Shade the right-hand face of each peak so the range reads as lit from the left."""
-    faces = []
-    for (x, y, is_peak), (xs, ys, _), (xv, yv, _) in zip(points, points[1:], points[2:]):
-        if is_peak:
-            faces.append(f'<path d="M{x:.0f} {y:.0f} L{xs:.0f} {ys:.0f} L{xv:.0f} {yv:.0f} L{xv:.0f} {floor} L{x:.0f} {floor}Z" '
-                         f'fill="#071221" opacity=".22"/>')
-    return "".join(faces)
-
-
-def _snow(points: list[tuple[float, float, bool]], reach: float, opacity: float) -> str:
-    """Light caps on the peaks of a ridge."""
-    caps = []
-    for (x0, _, _), (x, y, is_peak), (x1, _, _) in zip(points, points[1:], points[2:]):
-        if is_peak:
-            l, r = (x - x0) * .62, (x1 - x) * .62
-            caps.append(
-                f'<path d="M{x:.0f} {y:.0f} L{x - l:.0f} {y + reach:.0f} L{x - l * .45:.0f} {y + reach * .6:.0f} '
-                f'L{x - l * .1:.0f} {y + reach * 1.1:.0f} L{x + r * .3:.0f} {y + reach * .55:.0f} '
-                f'L{x + r * .6:.0f} {y + reach * .95:.0f} L{x + r:.0f} {y + reach * .8:.0f}Z" '
-                f'fill="{SILVER}" opacity="{opacity}"/>'
-            )
-    return "".join(caps)
-
-
-def _curtain(top: float, swing: float, period: float, phase: float, depth: float, x0: int = 760) -> str:
-    """One aurora curtain: a wavy band that is brightest along its lower edge."""
-    xs = range(x0, 1661, 30)
-    upper = [(x, top + swing * math.sin((x + phase) / period) - (x - x0) * .03) for x in xs]
-    lower = [(x, y + depth * (.8 + .2 * math.sin((x + phase) / (period * .4)))) for x, y in upper]
-    path = " ".join(f"L{x} {y:.0f}" for x, y in upper + lower[::-1])
-    return f'<path d="M{path[1:]}Z" fill="url(#curtain)"/>'
-
-
-@lru_cache(maxsize=1)
-def banner_data_uri() -> str:
-    """An aurora over a mountain lake, as an inline SVG background."""
-    rng = random.Random(11)
-    stars = "".join(
-        f'<circle cx="{rng.uniform(0, 1600):.0f}" cy="{rng.uniform(0, 210):.0f}" '
-        f'r="{rng.choice([.6, .7, .8, 1, 1.3]):.1f}" fill="#fff" opacity="{rng.uniform(.25, .95):.2f}"/>'
-        for _ in range(190)
-    )
-    far = _ridge(rng, 258, 150, 96)
-    mid = _ridge(rng, 266, 92, 70)
-    near = _ridge(rng, 274, 36, 34)
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMin slice">
-<defs>
- <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#040915"/><stop offset=".6" stop-color="#0B1D38"/><stop offset="1" stop-color="{MIDNIGHT}"/>
- </linearGradient>
- <linearGradient id="curtain" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#35F0A8" stop-opacity="0"/><stop offset=".55" stop-color="#35F0A8" stop-opacity=".5"/>
-  <stop offset=".88" stop-color="#8CFFD9" stop-opacity=".95"/><stop offset="1" stop-color="{AURORA}" stop-opacity="0"/>
- </linearGradient>
- <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#12304A"/><stop offset="1" stop-color="{MIDNIGHT}"/>
- </linearGradient>
- <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-  <stop offset=".62" stop-color="{MIDNIGHT}" stop-opacity="0"/><stop offset=".96" stop-color="{MIDNIGHT}"/>
- </linearGradient>
- <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="{MIDNIGHT}" stop-opacity=".9"/><stop offset=".38" stop-color="{MIDNIGHT}" stop-opacity=".45"/>
-  <stop offset=".62" stop-color="{MIDNIGHT}" stop-opacity="0"/>
- </linearGradient>
- <filter id="glow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="40"/></filter>
- <filter id="soft" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
- <filter id="haze" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="18"/></filter>
-</defs>
-<rect width="1600" height="400" fill="url(#sky)"/>
-{stars}
-<g filter="url(#glow)" opacity=".55"><path d="M780 -60 C960 60 1200 150 1660 90 L1660 -60Z" fill="#19C79A"/></g>
-<g filter="url(#soft)">{_curtain(8, 34, 120, 0, 150)}{_curtain(-30, 26, 90, 400, 120, 1040)}</g>
-<g filter="url(#soft)" opacity=".7">{_curtain(40, 22, 150, 900, 90, 1180)}</g>
-{_range(far, "#17324F", 300)}{_facets(far, 300)}{_snow(far, 30, .6)}
-{_range(mid, "#122A46", 300)}{_facets(mid, 300)}{_snow(mid, 17, .38)}
-{_range(near, "#0A1A2E", 300)}
-<g filter="url(#haze)" opacity=".55"><rect x="-40" y="246" width="1680" height="34" fill="#24506F"/></g>
-<rect y="274" width="1600" height="126" fill="url(#lake)"/>
-<g filter="url(#haze)" opacity=".5"><ellipse cx="1210" cy="300" rx="380" ry="14" fill="#35F0A8"/></g>
-<rect width="1600" height="400" fill="url(#shade)"/>
-<rect width="1600" height="400" fill="url(#fade)"/>
-</svg>"""
-    return "data:image/svg+xml;base64," + base64.b64encode(svg.encode()).decode()
-
-
 def css(dim_banner: bool = False) -> str:
     """The page stylesheet. dim_banner fades the artwork on pages where text sits over it."""
     veil = "linear-gradient(rgba(12,22,38,.72), var(--ns-midnight) 330px), " if dim_banner else ""
@@ -154,9 +47,10 @@ html, body, [data-testid="stAppViewContainer"] {{
 }}
 [data-testid="stAppViewContainer"] {{ background:var(--ns-midnight); }}
 [data-testid="stMain"] {{
-  background:{veil}url("{banner_data_uri()}") top center / 100% 380px no-repeat, var(--ns-midnight);
+  background:{veil}url("{banner_data_uri()}") top center / max(100%, 1480px) auto no-repeat, var(--ns-midnight);
 }}
 [data-testid="stHeader"] {{ background:transparent; }}
+[data-testid="stHeaderActionElements"] {{ display:none; }}
 [data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="stStatusWidget"] {{ display:none; }}
 [data-testid="stMainBlockContainer"] {{ padding:6.2rem 2.4rem 1rem; max-width:1500px; }}
 h1,h2,h3 {{ letter-spacing:-.02em; color:var(--ns-ice); }}
@@ -254,7 +148,7 @@ a {{ color:var(--ns-aurora); }}
 }}
 .st-key-chat_scroll {{ border:none !important; }}
 /* the chat fills what is left of the window, so the dashboard fits one screen */
-[data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 684px) !important; min-height:300px; }}
+[data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 714px) !important; min-height:300px; }}
 .ns-user {{ display:flex; justify-content:flex-end; align-items:flex-start; gap:14px; margin:.3rem 0 .2rem; }}
 .ns-user-bubble {{
   background:#1C3252; border:1px solid #2F4B6C; color:var(--ns-ice); padding:.7rem 1.15rem;
@@ -338,8 +232,10 @@ a {{ color:var(--ns-aurora); }}
 }}
 
 /* ---------- entry screen ---------- */
-.ns-entry-brand {{ display:flex; align-items:center; gap:16px; justify-content:center; margin:9vh 0 2.2rem; }}
-.ns-entry h1 {{ text-align:center; font-size:2.9rem; margin:0; }}
+/* The wordmark sits in the open sky, top left; the heading and form start below the shoreline. */
+.ns-entry-brand {{ position:fixed; top:1.7rem; left:2.2rem; display:flex; align-items:center; gap:16px; z-index:5; }}
+.ns-entry {{ margin-top:calc(max(17.6vw, 262px) - 9rem); }}
+.ns-entry h1 {{ text-align:center; font-size:3rem; margin:0; text-shadow:0 2px 26px rgba(5,11,23,.95); }}
 .ns-entry p {{ text-align:center; color:var(--ns-silver); font-size:1.15rem; margin:.4rem 0 1.4rem; }}
 [data-testid="stForm"] {{ background:rgba(16,29,48,.88); border:1px solid var(--ns-line); border-radius:16px; padding:1.6rem 1.6rem 1.3rem; backdrop-filter:blur(8px); }}
 [data-testid="stForm"] input {{ font-size:1.08rem; padding:.8rem .9rem; }}
