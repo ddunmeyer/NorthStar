@@ -14,6 +14,7 @@ Built by **David Dunmeyer** and **Biswa** for the **Agentic AI class at IT Exper
 - **Cited policy answers.** Policy questions are answered only from retrieved text, with the document and section shown, for example *Employee Handbook, Section 2*. If no policy covers a question, it says so.
 - **Exact numbers.** Totals such as expenses are added up in code, to the cent. The model explains them; it never does the maths.
 - **Draft, then confirm.** An agent can draft an IT request, but only the employee can submit it, by clicking Confirm. Confirming twice still creates one record.
+- **Open internal jobs.** Lists open postings by department or work mode, with requisition IDs.
 - **Your records only.** The signed-in employee is fixed by the app, not by anything typed in chat, so asking for a colleague's expenses is refused.
 - **Shows its work.** Each answer lists which specialists were used, the hand-offs between them, and how long it took.
 
@@ -99,7 +100,6 @@ Sign in with one of the fictional first names in `data/identity/employees.json`,
 
 - **Sign-in is a classroom shortcut.** Entering a first name selects a fictional profile; it is not authentication.
 - **The business systems are simulated.** The HR, project and IT records are fictional data in DynamoDB, not live vendor systems.
-- **Not built yet:** the "Open roles" search.
-- **Measured, not perfect.** On the 30-case evaluation the app passed 24, with a median response of 2.8 seconds. The six failures and their causes are in [evaluation/README.md](evaluation/README.md).
+- **Measured, with a caveat.** The 30-case evaluation first passed 24; after fixes it passed all 30, with a median response of 2.8 seconds. Answers vary between runs, so that is one clean run, not a guarantee. The findings and fixes are in [evaluation/README.md](evaluation/README.md).
 
 Next steps would be real sign-in, connecting live systems through MCP, and running the agents on Amazon Bedrock AgentCore.
