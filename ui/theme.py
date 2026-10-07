@@ -168,6 +168,7 @@ a {{ color:var(--ns-aurora); }}
 [data-testid="stChatMessageContent"] {{
   background:linear-gradient(180deg,#182942,#14233A); border:1px solid var(--ns-line);
   border-radius:4px 14px 14px 14px; padding:1rem 1.3rem 1.05rem; max-width:860px; flex:0 1 auto;
+  margin-left:0; margin-right:auto;  /* sit next to the avatar; the default centres it on wide screens */
 }}
 [data-testid="stChatMessageContent"] p, [data-testid="stChatMessageContent"] li {{ font-size:1.06rem; line-height:1.6; }}
 .ns-from {{ font-size:.8rem; letter-spacing:.12em; color:var(--ns-silver); margin-bottom:.35rem; }}
