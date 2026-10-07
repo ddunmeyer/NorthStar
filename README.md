@@ -92,12 +92,14 @@ Sign in with one of the fictional first names in `data/identity/employees.json`,
 | `tools/` | The tools each specialist can call, and the Confirm step |
 | `data/`, `kb/` | Fictional records and the six policy documents |
 | `scripts/` | Data loader and the hosting scripts |
+| `evaluation/` | The 30 test cases, the runner and the recorded results |
 | `docs/` | Hosting notes and screenshots |
 
 ## Limits
 
 - **Sign-in is a classroom shortcut.** Entering a first name selects a fictional profile; it is not authentication.
 - **The business systems are simulated.** The HR, project and IT records are fictional data in DynamoDB, not live vendor systems.
-- **Not built yet:** the "Open roles" search, and a recorded evaluation run.
+- **Not built yet:** the "Open roles" search.
+- **Measured, not perfect.** On the 30-case evaluation the app passed 24, with a median response of 2.8 seconds. The six failures and their causes are in [evaluation/README.md](evaluation/README.md).
 
 Next steps would be real sign-in, connecting live systems through MCP, and running the agents on Amazon Bedrock AgentCore.
