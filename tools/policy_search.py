@@ -47,7 +47,9 @@ def search_policies(question: str) -> dict:
     response = _client.retrieve(
         knowledgeBaseId=KB_ID,
         retrievalQuery={"text": question},
-        retrievalConfiguration={"vectorSearchConfiguration": {"numberOfResults": 3}},
+        # The library is six short documents, each stored whole. Asking for the top three missed the
+        # right one on loosely worded questions ("explain carryover"), so take all of them, best first.
+        retrievalConfiguration={"vectorSearchConfiguration": {"numberOfResults": 6}},
     )
 
     documents = []
