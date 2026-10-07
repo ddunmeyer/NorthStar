@@ -1,1 +1,5 @@
 *.sh text eol=lf
+# Never convert line endings inside binary files.
+*.pdf binary
+*.png binary
+*.jpg binary
