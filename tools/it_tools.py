@@ -13,7 +13,8 @@ from tools.hr_tools import TABLE, _plain, _query_prefix
 
 TYPES = ("access", "incident", "change")
 CLOSED = {"closed", "fulfilled", "rejected", "cancelled", "resolved", "completed"}
-INCIDENT_FIELDS = ["short_description", "category"]
+# NS-IT-001 Section 1: an incident needs a summary, the affected area and its impact.
+INCIDENT_FIELDS = ["short_description", "category", "impact"]
 CHANGE_FIELDS = ["short_description", "service_id", "implementation_plan", "impact",
                  "rollback_plan", "scheduled_start", "scheduled_end"]
 LIST_FIELDS = ("number", "request_type", "short_description", "service_id", "status",
@@ -101,7 +102,8 @@ def make_it_tools(employee_id: str, drafts: dict) -> list:
             end_date: Access end date, YYYY-MM-DD.
             category: Incident category, for example Network.
             implementation_plan: For a change: the steps to carry it out.
-            impact: For a change: the expected impact.
+            impact: For an incident: who and what is affected and how badly, in the employee's own words.
+                For a change: the expected impact.
             rollback_plan: For a change: how to undo it.
             scheduled_start: For a change: start time with timezone, e.g. 2026-10-10T20:00:00-05:00.
             scheduled_end: For a change: end time with timezone.

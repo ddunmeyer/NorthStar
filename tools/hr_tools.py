@@ -1,4 +1,4 @@
-"""HR tools: the signed-in employee's PTO balance and expense summary.
+"""HR tools: the signed-in employee's PTO balance and expense summary, and open internal jobs.
 
 The app builds these tools after sign-in with make_hr_tools(employee_id).
 The employee ID is fixed inside the tools and is not a tool parameter, so the
@@ -8,6 +8,7 @@ Money is summed here in integer cents. The model only explains the totals.
 """
 import os
 import re
+from datetime import date
 from decimal import Decimal
 
 import boto3
@@ -51,6 +52,18 @@ def _query_prefix(pk: str, prefix: str) -> list:
         kwargs["ExclusiveStartKey"] = page["LastEvaluatedKey"]
 
 
+def _query_partition(pk: str) -> list:
+    """Read every item in one partition, following pagination."""
+    items = []
+    kwargs = {"KeyConditionExpression": Key("pk").eq(pk)}
+    while True:
+        page = TABLE.query(**kwargs)
+        items.extend(page["Items"])
+        if "LastEvaluatedKey" not in page:
+            return items
+        kwargs["ExclusiveStartKey"] = page["LastEvaluatedKey"]
+
+
 def make_hr_tools(employee_id: str) -> list:
     """Build the HR tools for one signed-in employee."""
     pk = f"EMP#{employee_id}"
@@ -69,16 +82,17 @@ def make_hr_tools(employee_id: str) -> list:
         return _plain({k: item[k] for k in keep if k in item})
 
     @tool
-    def summarize_my_expenses(month: str, status: str | None = None) -> dict:
+    def summarize_my_expenses(month: str | None = None, status: str | None = None) -> dict:
         """Summarize the signed-in employee's expenses for one month.
 
         Totals are calculated in code to the cent. Report them exactly as given.
 
         Args:
-            month: The month in YYYY-MM format, for example 2026-10.
+            month: The month in YYYY-MM format, for example 2026-10. Leave it out for the current month.
             status: Optional filter, for example paid, approved or pending.
         """
-        if not MONTH.match(month or ""):
+        month = (month or "").strip() or date.today().strftime("%Y-%m")
+        if not MONTH.match(month):
             return {"error": "month must be in YYYY-MM format, for example 2026-10."}
 
         expenses = _query_prefix(pk, f"EXP#{month}#")
@@ -103,8 +117,36 @@ def make_hr_tools(employee_id: str) -> list:
             "month": month,
             "status_filter": status,
             "expense_count": len(expenses),
+            # From the Travel and Expense Policy, so "approved but unpaid" is never confused with "pending".
+            "status_meanings": {"pending": "awaiting review, not yet approved",
+                                "approved": "approved but not yet paid",
+                                "paid": "payment completed"},
             "totals_by_currency": totals,
             "expenses": [_plain({k: x[k] for k in fields if k in x}) for x in expenses],
         }
 
-    return [get_my_pto, summarize_my_expenses]
+    @tool
+    def search_jobs(department: str | None = None, work_mode: str | None = None,
+                    title: str | None = None, location: str | None = None) -> dict:
+        """Search open internal job postings. Closed postings are never returned.
+
+        This only lists jobs. It cannot submit an application.
+
+        Args:
+            department: Optional department, for example Engineering, IT or HR.
+            work_mode: Optional work mode: remote, hybrid or onsite.
+            title: Optional words to look for in the job title.
+            location: Optional location, for example Chicago.
+        """
+        wanted = {"department": department, "work_mode": work_mode, "title": title, "location": location}
+        wanted = {k: v.strip().lower() for k, v in wanted.items() if v and v.strip()}
+        jobs = [j for j in _query_partition("JOBS") if str(j.get("status", "")).lower() == "open"]
+        for field, value in wanted.items():
+            exact = field in ("department", "work_mode")
+            jobs = [j for j in jobs
+                    if (str(j.get(field, "")).lower() == value if exact else value in str(j.get(field, "")).lower())]
+        fields = ("requisition_id", "title", "department", "location", "work_mode", "employment_type", "posted_date")
+        return {"filters": wanted, "job_count": len(jobs),
+                "jobs": [_plain({k: j[k] for k in fields if k in j}) for j in jobs]}
+
+    return [get_my_pto, summarize_my_expenses, search_jobs]
