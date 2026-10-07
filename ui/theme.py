@@ -247,6 +247,7 @@ a {{ color:var(--ns-aurora); }}
 
 /* ---------- phones: no sidebar, a tab bar pinned to the bottom ---------- */
 .ns-mobile-brand {{ display:none; align-items:center; gap:10px; }}
+[data-testid="stElementContainer"]:has(.ns-chatting) {{ display:none; }}
 [data-testid="stElementContainer"]:has(.ns-mobile-brand),
 [data-testid="stLayoutWrapper"]:has(> .st-key-mobile_nav), .st-key-mobile_nav {{ display:none; }}
 @media (max-width: 768px) {{
@@ -288,7 +289,19 @@ a {{ color:var(--ns-aurora); }}
 
   /* chat */
   .st-key-chat_panel {{ padding:.35rem .55rem .7rem; border-radius:14px; }}
-  [data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{ height:calc(100vh - 548px) !important; flex:0 0 auto !important; min-height:250px; }}
+  /* Size the chat to the part of the screen the phone's browser really shows (dvh), so the
+     message box always sits just above the tab bar. */
+  [data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{
+    height:calc(100vh - 528px) !important; height:calc(100dvh - 528px) !important; flex:0 0 auto !important; min-height:120px; }}
+  .ns-empty svg {{ width:30px; height:30px; }} .ns-empty h3 {{ font-size:1.12rem; margin:.4rem 0 0; }}
+  .ns-empty-more {{ display:none; }}
+  /* Once a conversation starts, the heading and quick prompts step aside and the chat takes the room. */
+  [data-testid="stMain"]:has(.ns-chatting) [data-testid="stElementContainer"]:has(.ns-hero),
+  [data-testid="stMain"]:has(.ns-chatting) [data-testid="stHorizontalBlock"]:has([class*="st-key-quick_"]),
+  [data-testid="stMain"]:has(.ns-chatting) [data-testid="stLayoutWrapper"]:has(> [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] [class*="st-key-quick_"]) {{
+    display:none !important; }}
+  [data-testid="stMain"]:has(.ns-chatting) [data-testid="stLayoutWrapper"]:has(> .st-key-chat_scroll) {{
+    height:calc(100vh - 324px) !important; height:calc(100dvh - 324px) !important; }}
   [data-testid="stChatMessage"] {{ gap:10px; }}
   [data-testid="stChatMessage"] > :first-child {{ width:36px; height:36px; padding:6px; border-radius:8px; }}
   [data-testid="stChatMessageContent"] {{ padding:.75rem .9rem .8rem; }}
@@ -299,7 +312,7 @@ a {{ color:var(--ns-aurora); }}
   .ns-source small {{ margin-left:0; flex-basis:100%; padding-left:30px; }}
   .ns-draft dl {{ grid-template-columns:minmax(0,1fr); gap:0; }} .ns-draft dd {{ margin-bottom:.45rem; }}
   .ns-handoff {{ grid-template-columns:auto 1fr; }} .ns-handoff span:last-child {{ grid-column:1 / -1; }}
-  .ns-empty {{ padding:1.6rem .6rem 1rem; }}
+  .ns-empty {{ padding:.8rem .6rem .3rem; }}
   .ns-foot {{ text-align:center; }}
 
   /* bottom tab bar */
@@ -317,7 +330,9 @@ a {{ color:var(--ns-aurora); }}
   .st-key-mobile_nav button > div > span {{ flex-direction:column; gap:1px; }}
   .st-key-mobile_nav button p {{ font-size:.68rem; white-space:nowrap; }}
   .st-key-mobile_nav button [data-testid="stIconMaterial"] {{ font-size:1.45rem; }}
-  .st-key-mobile_nav button[kind="primary"], .st-key-mobile_nav [data-testid="stBaseButton-primary"] {{ background:#182C47; color:var(--ns-aurora); }}
+  /* phones keep a tapped button in its hover state; only the current tab should look selected */
+  .st-key-mobile_nav button:hover, .st-key-mobile_nav button:active, .st-key-mobile_nav button:focus {{ background:transparent; color:var(--ns-silver); }}
+  .st-key-mobile_nav button[kind="primary"], .st-key-mobile_nav [data-testid="stBaseButton-primary"] {{ background:#182C47 !important; color:var(--ns-aurora) !important; }}
 
   /* entry screen */
   .ns-entry-brand {{ top:1rem; left:1rem; gap:10px; }}

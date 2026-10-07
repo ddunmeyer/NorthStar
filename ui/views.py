@@ -275,6 +275,8 @@ def overview(profile: dict, snap: dict) -> None:
     month_long = date.today().strftime("%B %Y")
     html(f'<div class="ns-hero"><h1>Welcome back, {escape(profile["name"])}.</h1>'
             '<p>Everything you need. One clear direction.</p></div>')
+    if st.session_state.messages:
+        html('<span class="ns-chatting"></span>')  # lets the phone layout give the chat more room
 
     prompt = st.session_state.pop("queued", None)
     pto = snap["pto"]
@@ -313,8 +315,8 @@ def overview(profile: dict, snap: dict) -> None:
     with box:
         if not st.session_state.messages and not prompt:
             html(f'<div class="ns-empty">{theme.star_svg(44)}<h3>Where would you like to start?</h3>'
-                    'Ask about your time off, expenses, tasks or IT requests. '
-                    'North Star checks your records and shows where each answer came from.</div>')
+                    '<span class="ns-empty-more">Ask about your time off, expenses, tasks or IT requests. '
+                    'North Star checks your records and shows where each answer came from.</span></div>')
         for index, msg in enumerate(st.session_state.messages):
             (_user_message if msg["role"] == "user" else _assistant_message)(*([msg] if msg["role"] == "user" else [msg, index]))
         if prompt:
