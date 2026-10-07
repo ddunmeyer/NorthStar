@@ -8,3 +8,4 @@ __pycache__/
 .streamlit/secrets.toml
 evaluation/results/
 .DS_Store
+.northstar-hosting.json
