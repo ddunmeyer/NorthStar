@@ -418,5 +418,845 @@
     "status": "pending",
     "category": "Meals",
     "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-4",
+    "employee_id": "E001",
+    "submitted_date": "2026-08-06",
+    "amount_cents": 35600,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-5",
+    "employee_id": "E001",
+    "submitted_date": "2026-08-14",
+    "amount_cents": 21280,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-6",
+    "employee_id": "E001",
+    "submitted_date": "2026-08-22",
+    "amount_cents": 4875,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-4",
+    "employee_id": "E002",
+    "submitted_date": "2026-08-07",
+    "amount_cents": 16925,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-5",
+    "employee_id": "E002",
+    "submitted_date": "2026-08-15",
+    "amount_cents": 24780,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-6",
+    "employee_id": "E002",
+    "submitted_date": "2026-08-23",
+    "amount_cents": 7090,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-4",
+    "employee_id": "E003",
+    "submitted_date": "2026-08-08",
+    "amount_cents": 16325,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-5",
+    "employee_id": "E003",
+    "submitted_date": "2026-08-16",
+    "amount_cents": 26995,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-6",
+    "employee_id": "E003",
+    "submitted_date": "2026-08-24",
+    "amount_cents": 6155,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-4",
+    "employee_id": "E004",
+    "submitted_date": "2026-08-09",
+    "amount_cents": 59100,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-5",
+    "employee_id": "E004",
+    "submitted_date": "2026-08-17",
+    "amount_cents": 28220,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-6",
+    "employee_id": "E004",
+    "submitted_date": "2026-08-25",
+    "amount_cents": 6365,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-4",
+    "employee_id": "E005",
+    "submitted_date": "2026-08-10",
+    "amount_cents": 29800,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-5",
+    "employee_id": "E005",
+    "submitted_date": "2026-08-18",
+    "amount_cents": 7505,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-6",
+    "employee_id": "E005",
+    "submitted_date": "2026-08-26",
+    "amount_cents": 2980,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-4",
+    "employee_id": "E006",
+    "submitted_date": "2026-08-06",
+    "amount_cents": 31050,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-5",
+    "employee_id": "E006",
+    "submitted_date": "2026-08-14",
+    "amount_cents": 22615,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-6",
+    "employee_id": "E006",
+    "submitted_date": "2026-08-22",
+    "amount_cents": 1965,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-4",
+    "employee_id": "E007",
+    "submitted_date": "2026-08-07",
+    "amount_cents": 57675,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-5",
+    "employee_id": "E007",
+    "submitted_date": "2026-08-15",
+    "amount_cents": 17070,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-6",
+    "employee_id": "E007",
+    "submitted_date": "2026-08-23",
+    "amount_cents": 4000,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-4",
+    "employee_id": "E008",
+    "submitted_date": "2026-08-08",
+    "amount_cents": 49500,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-5",
+    "employee_id": "E008",
+    "submitted_date": "2026-08-16",
+    "amount_cents": 18440,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-6",
+    "employee_id": "E008",
+    "submitted_date": "2026-08-24",
+    "amount_cents": 5500,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-4",
+    "employee_id": "E009",
+    "submitted_date": "2026-08-09",
+    "amount_cents": 58950,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-5",
+    "employee_id": "E009",
+    "submitted_date": "2026-08-17",
+    "amount_cents": 25235,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-6",
+    "employee_id": "E009",
+    "submitted_date": "2026-08-25",
+    "amount_cents": 2630,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-4",
+    "employee_id": "E010",
+    "submitted_date": "2026-08-10",
+    "amount_cents": 30900,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-5",
+    "employee_id": "E010",
+    "submitted_date": "2026-08-18",
+    "amount_cents": 27030,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-6",
+    "employee_id": "E010",
+    "submitted_date": "2026-08-26",
+    "amount_cents": 7355,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-4",
+    "employee_id": "E011",
+    "submitted_date": "2026-08-06",
+    "amount_cents": 33450,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-5",
+    "employee_id": "E011",
+    "submitted_date": "2026-08-14",
+    "amount_cents": 22935,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-6",
+    "employee_id": "E011",
+    "submitted_date": "2026-08-22",
+    "amount_cents": 3290,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-4",
+    "employee_id": "E012",
+    "submitted_date": "2026-08-07",
+    "amount_cents": 30100,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-5",
+    "employee_id": "E012",
+    "submitted_date": "2026-08-15",
+    "amount_cents": 19305,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-6",
+    "employee_id": "E012",
+    "submitted_date": "2026-08-23",
+    "amount_cents": 5570,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-4",
+    "employee_id": "E013",
+    "submitted_date": "2026-08-08",
+    "amount_cents": 52800,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-5",
+    "employee_id": "E013",
+    "submitted_date": "2026-08-16",
+    "amount_cents": 7910,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-6",
+    "employee_id": "E013",
+    "submitted_date": "2026-08-24",
+    "amount_cents": 5930,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-4",
+    "employee_id": "E014",
+    "submitted_date": "2026-08-09",
+    "amount_cents": 46875,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-5",
+    "employee_id": "E014",
+    "submitted_date": "2026-08-17",
+    "amount_cents": 21625,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-6",
+    "employee_id": "E014",
+    "submitted_date": "2026-08-25",
+    "amount_cents": 7035,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-7",
+    "employee_id": "E001",
+    "submitted_date": "2026-09-06",
+    "amount_cents": 38000,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-8",
+    "employee_id": "E001",
+    "submitted_date": "2026-09-14",
+    "amount_cents": 16425,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-001-9",
+    "employee_id": "E001",
+    "submitted_date": "2026-09-22",
+    "amount_cents": 6240,
+    "currency": "USD",
+    "status": "approved",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-7",
+    "employee_id": "E002",
+    "submitted_date": "2026-09-07",
+    "amount_cents": 52275,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-8",
+    "employee_id": "E002",
+    "submitted_date": "2026-09-15",
+    "amount_cents": 25685,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-002-9",
+    "employee_id": "E002",
+    "submitted_date": "2026-09-23",
+    "amount_cents": 4495,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-7",
+    "employee_id": "E003",
+    "submitted_date": "2026-09-08",
+    "amount_cents": 55500,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-8",
+    "employee_id": "E003",
+    "submitted_date": "2026-09-16",
+    "amount_cents": 23825,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-003-9",
+    "employee_id": "E003",
+    "submitted_date": "2026-09-24",
+    "amount_cents": 7100,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-7",
+    "employee_id": "E004",
+    "submitted_date": "2026-09-09",
+    "amount_cents": 18575,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-8",
+    "employee_id": "E004",
+    "submitted_date": "2026-09-17",
+    "amount_cents": 13395,
+    "currency": "USD",
+    "status": "approved",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-004-9",
+    "employee_id": "E004",
+    "submitted_date": "2026-09-25",
+    "amount_cents": 3170,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-7",
+    "employee_id": "E005",
+    "submitted_date": "2026-09-10",
+    "amount_cents": 19400,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-8",
+    "employee_id": "E005",
+    "submitted_date": "2026-09-18",
+    "amount_cents": 25630,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-005-9",
+    "employee_id": "E005",
+    "submitted_date": "2026-09-26",
+    "amount_cents": 2900,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-7",
+    "employee_id": "E006",
+    "submitted_date": "2026-09-06",
+    "amount_cents": 53700,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-8",
+    "employee_id": "E006",
+    "submitted_date": "2026-09-14",
+    "amount_cents": 10030,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-006-9",
+    "employee_id": "E006",
+    "submitted_date": "2026-09-22",
+    "amount_cents": 6785,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-7",
+    "employee_id": "E007",
+    "submitted_date": "2026-09-07",
+    "amount_cents": 31350,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-8",
+    "employee_id": "E007",
+    "submitted_date": "2026-09-15",
+    "amount_cents": 22910,
+    "currency": "USD",
+    "status": "approved",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-007-9",
+    "employee_id": "E007",
+    "submitted_date": "2026-09-23",
+    "amount_cents": 6655,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-7",
+    "employee_id": "E008",
+    "submitted_date": "2026-09-08",
+    "amount_cents": 36950,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-8",
+    "employee_id": "E008",
+    "submitted_date": "2026-09-16",
+    "amount_cents": 20665,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-008-9",
+    "employee_id": "E008",
+    "submitted_date": "2026-09-24",
+    "amount_cents": 5000,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-7",
+    "employee_id": "E009",
+    "submitted_date": "2026-09-09",
+    "amount_cents": 52350,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-8",
+    "employee_id": "E009",
+    "submitted_date": "2026-09-17",
+    "amount_cents": 21935,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-009-9",
+    "employee_id": "E009",
+    "submitted_date": "2026-09-25",
+    "amount_cents": 3920,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-7",
+    "employee_id": "E010",
+    "submitted_date": "2026-09-10",
+    "amount_cents": 33200,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-8",
+    "employee_id": "E010",
+    "submitted_date": "2026-09-18",
+    "amount_cents": 4575,
+    "currency": "USD",
+    "status": "approved",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-010-9",
+    "employee_id": "E010",
+    "submitted_date": "2026-09-26",
+    "amount_cents": 2185,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-7",
+    "employee_id": "E011",
+    "submitted_date": "2026-09-06",
+    "amount_cents": 38150,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-8",
+    "employee_id": "E011",
+    "submitted_date": "2026-09-14",
+    "amount_cents": 22965,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-011-9",
+    "employee_id": "E011",
+    "submitted_date": "2026-09-22",
+    "amount_cents": 7200,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-7",
+    "employee_id": "E012",
+    "submitted_date": "2026-09-07",
+    "amount_cents": 51600,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-8",
+    "employee_id": "E012",
+    "submitted_date": "2026-09-15",
+    "amount_cents": 12385,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-012-9",
+    "employee_id": "E012",
+    "submitted_date": "2026-09-23",
+    "amount_cents": 4510,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-7",
+    "employee_id": "E013",
+    "submitted_date": "2026-09-08",
+    "amount_cents": 53625,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-8",
+    "employee_id": "E013",
+    "submitted_date": "2026-09-16",
+    "amount_cents": 25140,
+    "currency": "USD",
+    "status": "approved",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-013-9",
+    "employee_id": "E013",
+    "submitted_date": "2026-09-24",
+    "amount_cents": 6940,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-7",
+    "employee_id": "E014",
+    "submitted_date": "2026-09-09",
+    "amount_cents": 55350,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Hotel",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-8",
+    "employee_id": "E014",
+    "submitted_date": "2026-09-17",
+    "amount_cents": 5575,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Transport",
+    "receipt_attached": true
+  },
+  {
+    "report_id": "EXP-014-9",
+    "employee_id": "E014",
+    "submitted_date": "2026-09-25",
+    "amount_cents": 4820,
+    "currency": "USD",
+    "status": "paid",
+    "category": "Meals",
+    "receipt_attached": true
   }
 ]

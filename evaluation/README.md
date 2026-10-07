@@ -31,7 +31,8 @@ Four cases are not chat questions and are tested directly:
 | Run | Passed | Median | 95th percentile |
 |---|---|---|---|
 | First run | 24 of 30 | 2.79 s | 4.9 s |
-| After fixes (recorded in `RESULTS.md`) | **30 of 30** | 2.8 s | 4.47 s |
+| After fixes | **30 of 30** | 2.8 s | 4.47 s |
+| After adding dress code, sick leave and two more months of expenses (recorded in `RESULTS.md`) | **30 of 30** | 2.73 s | 4.85 s |
 
 Model: Amazon Nova 2 Lite. The final run used about 197,000 input tokens and 4,800 output tokens across all 30 cases.
 
