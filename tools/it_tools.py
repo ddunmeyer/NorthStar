@@ -146,8 +146,10 @@ def make_it_tools(employee_id: str, drafts: dict) -> list:
         else:
             required = CHANGE_FIELDS
 
-        # A justification copied from the description isn't a reason the employee gave.
-        if given.get("business_justification", "").lower() == given.get("short_description", "").lower():
+        # A real reason explains why, in the employee's words. Reject one that only repeats
+        # the request (for example "NST project" from "AWS sandbox access for NST project").
+        reason = given.get("business_justification", "").lower().strip(" .")
+        if reason and (reason in given.get("short_description", "").lower() or len(reason.split()) < 4):
             given.pop("business_justification", None)
 
         missing = [f for f in required if f not in given]
