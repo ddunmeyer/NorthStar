@@ -4,7 +4,7 @@
 
 North Star is an employee assistant that answers one question across several company systems. An employee asks in plain English; a coordinator agent hands the request to an HR, developer or IT specialist; and the answer comes back with the records it used and the policy it cites.
 
-Built by **David Dunmeyer** and **Biswa**. This repository is the public reference build of Project North Star, the agentic AI initiative David leads at Expert Management Group. The live work goes beyond what is shown here, and every employee record, policy and request in this repository is fictional.
+Built by **David Dunmeyer** and **Biswa**. This repository is the public reference build of Project North Star, the agentic AI initiative David leads at Expert Management Group. The live work goes beyond what is shown here. For security, every employee record, policy and request in this repository is fictional.
 
 ## What it does
 
